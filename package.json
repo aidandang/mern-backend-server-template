@@ -1,0 +1,18 @@
+{
+	"name": "mern-backend-server-template",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "git@github.com:aidandang/mern-backend-server-template.git",
+	"author": "Aidan Dang <aidandang@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"start": "node server.js",
+		"server": "nodemon server.js"
+	},
+	"dependencies": {
+		"express": "^4.17.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	}
+}
