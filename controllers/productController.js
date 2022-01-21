@@ -57,5 +57,12 @@ exports.updateProduct = catchAsync(async (req, res, next) => {
 });
 
 exports.deleteProduct = catchAsync(async (req, res, next) => {
-	next(new AppError(`under contruction`, 404));
+	const { id } = req.params;
+
+	const product = await Product.findByIdAndDelete(id);
+
+	res.status(200).json({
+		status: 'success',
+		product,
+	});
 });
