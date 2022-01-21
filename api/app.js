@@ -1,6 +1,7 @@
 // dependency imports
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 // component imports
 const AppError = require('../utils/AppError');
@@ -11,6 +12,7 @@ const app = express();
 
 // middlewares
 app.use(cors({ origin: '*' }));
+app.use(bodyParser.json());
 
 // routes
 app.use('/api/v1/products', productRouter);

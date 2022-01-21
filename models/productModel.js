@@ -24,9 +24,10 @@ const productSchema = new Schema({
 		required: true,
 		index: true,
 	},
-	sku: {
+	style: {
 		type: String,
-		default: '',
+		required: true,
+		index: true,
 	},
 	desc: {
 		type: String,

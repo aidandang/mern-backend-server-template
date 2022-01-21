@@ -16,7 +16,14 @@ exports.getProducts = catchAsync(async (req, res, next) => {
 });
 
 exports.createProduct = catchAsync(async (req, res, next) => {
-	next(new AppError(`under contruction`, 404));
+	const reqBody = { ...req.body };
+
+	const product = await Product.create(reqBody);
+
+	res.status(200).json({
+		status: 'success',
+		product,
+	});
 });
 
 exports.getProduct = catchAsync(async (req, res, next) => {
