@@ -27,11 +27,33 @@ exports.createProduct = catchAsync(async (req, res, next) => {
 });
 
 exports.getProduct = catchAsync(async (req, res, next) => {
-	next(new AppError(`under contruction`, 404));
+	const { id } = req.params;
+
+	const product = await Product.findById(id);
+
+	if (!product) {
+		next(new AppError(`product not found`, 404));
+	}
+
+	res.status(200).json({
+		status: 'success',
+		product,
+	});
 });
 
 exports.updateProduct = catchAsync(async (req, res, next) => {
-	next(new AppError(`under contruction`, 404));
+	const { id } = req.params;
+	const reqBody = { ...req.body };
+
+	const product = await Product.findByIdAndUpdate(id, reqBody, {
+		new: true,
+		runValidators: true,
+	});
+
+	res.status(200).json({
+		status: 'success',
+		product,
+	});
 });
 
 exports.deleteProduct = catchAsync(async (req, res, next) => {
